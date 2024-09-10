@@ -4,7 +4,7 @@
 
 This is a RESTful API for a note-keeping application built with Node.js, Express.js, and MongoDB. The application allows users to perform CRUD operations on notes. Each note includes a title, content, and creation date. The API also supports search and pagination features.
 
-###Features
+### Features
 
 - Create, read, update, and delete notes.
 - Search notes by title or content.
@@ -48,4 +48,8 @@ npm start
     "creationDate": "2024-09-10T00:00:00Z" // Optional, defaults to current date
 }
 
-``` 
+```
+- Response:
+     - Success: 201 Created
+     - Error: 400 Bad Request if title or content is missing
+
