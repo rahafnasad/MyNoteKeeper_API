@@ -24,7 +24,28 @@ To run this application locally, follow these steps:
 
 2- Install Dependencies:
 Make sure you have Node.js and npm installed. Then, install the required packages:
- ''' bash
+ ```bash
 npm install
+``` 
 
-   ''' 
+3- Setup MongoDB:
+Ensure MongoDB is installed and running on your local machine. The application connects to MongoDB at mongodb://localhost:27017.
+
+4- Run the Application:
+Start the application using the following command:
+ ```bash
+npm start
+
+```
+## API Endpoints
+### Create a New Note
+- Endpoint: POST /notes
+- Request Body:
+ ```bash
+{
+    "title": "Note Title",
+    "content": "Note Content",
+    "creationDate": "2024-09-10T00:00:00Z" // Optional, defaults to current date
+}
+
+``` 
