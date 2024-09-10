@@ -54,7 +54,6 @@ npm start
 - Response:
   
      - Success: 201 Created
-       
      - Error: 400 Bad Request if title or content is missing
  
 ### Retrieve All Notes
@@ -71,3 +70,39 @@ npm start
      - Success: 200 OK with list of notes
      - Error: 500 Internal Server Error for server issues
 
+### Search Notes
+- Endpoint: GET /notes/search
+- Query Parameters:
+  
+    - query: Search term for title or content
+      
+- Response
+- 
+       - Success: 200 OK with list of matching notes
+       - Error: 500 Internal Server Error for server issues
+
+###  Retrieve a Note by ID
+
+- Endpoint: GET /notes/:id
+- Response:
+  
+    - Success: 200 OK with note details
+    - Error: 404 Not Found if note does not exist
+
+## Update a Note by ID
+- Endpoint: PUT /notes/:id
+- Request Body
+
+  ``` bash
+{
+    "title": "Note Title",
+    "content": "Note Content",
+    "creationDate": "2024-09-10T00:00:00Z" // Optional, defaults to current date
+} 
+```
+
+
+Response:
+Success: 200 OK if note updated
+Error: 400 Bad Request if title or content is missing
+Error: 404 Not Found if note does not exist
