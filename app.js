@@ -20,13 +20,29 @@ async function main() {
         app.post('/notes', async (req, res) => {
             try {
                 const { title, content, creationDate } = req.body;
-                if (!title || !content) {
-                    return res.status(400).json({ error: 'Title and content are required' });
+
+                // Validate the request body
+                if (!title || typeof title !== 'string') {
+                    return res.status(400).json({ error: 'Valid title is required' });
                 }
-                const result = await repo.loadData([{ title, content, creationDate }], db);
-                res.json(result);
+                if (!content || typeof content !== 'string') {
+                    return res.status(400).json({ error: 'Valid content is required' });
+                }
+
+                const newNote = {
+                    title,
+                    content,
+                    creationDate: creationDate ? new Date(creationDate) : new Date()
+                };
+
+                const result = await repo.loadData([newNote], db);
+
+                // Optionally, send back the inserted note
+                const insertedNote = result.insertedIds ? result.insertedIds[0] : null;
+
+                res.status(201).json({ message: 'Note added successfully', noteId: insertedNote });
             } catch (error) {
-                res.status(500).json({ error: error.message });
+                res.status(500).json({ error: 'Failed to add note: ' + error.message });
             }
         });
 
@@ -95,9 +111,12 @@ async function main() {
             try {
                 const id = req.params.id;
                 const updateData = req.body;
+
+                // Validate the update data
                 if (!updateData.title || !updateData.content) {
                     return res.status(400).json({ error: 'Title and content are required' });
                 }
+
                 const result = await repo.update(id, updateData, db);
                 if (result.modifiedCount > 0) {
                     res.json({ message: 'Note updated successfully' });
