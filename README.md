@@ -77,9 +77,9 @@ npm start
     - query: Search term for title or content
       
 - Response
-- 
-       - Success: 200 OK with list of matching notes
-       - Error: 500 Internal Server Error for server issues
+        -  Success: 200 OK with list of matching notes
+        -  Error: 500 Internal Server Error for server issues
+   
 
 ###  Retrieve a Note by ID
 
