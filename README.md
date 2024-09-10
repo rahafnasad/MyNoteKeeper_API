@@ -17,10 +17,10 @@ To run this application locally, follow these steps:
 1- Clone the Repository:
 
 
-  ''' bash
+ ```bash
     git clone https://github.com/rahafnasad/MyNoteKeeper_API.git
 
-   ''' 
+  ``` 
 
 2- Install Dependencies:
 Make sure you have Node.js and npm installed. Then, install the required packages:
