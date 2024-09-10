@@ -73,7 +73,6 @@ npm start
 ### Search Notes
 - Endpoint: GET /notes/search
 - Query Parameters:
-  
     - query: Search term for title or content
       
 - Response
@@ -91,18 +90,25 @@ npm start
 
 ## Update a Note by ID
 - Endpoint: PUT /notes/:id
-- Request Body
-
-  ``` bash
+- Request Body:
+ ```bash
 {
     "title": "Note Title",
     "content": "Note Content",
     "creationDate": "2024-09-10T00:00:00Z" // Optional, defaults to current date
-} 
+}
+
 ```
+- Response:
+  - Success: 200 OK if note updated
+  - Error: 400 Bad Request if title or content is missing
+  - Error: 404 Not Found if note does not exist
 
+    ###  Delete a Note by ID
+ - Endpoint: DELETE /notes/:id
+ - Response:
+   - Success: 200 OK if note deleted
+   - Error: 404 Not Found if note does not exist
 
-Response:
-Success: 200 OK if note updated
-Error: 400 Bad Request if title or content is missing
-Error: 404 Not Found if note does not exist
+### Error Handling
+All endpoints handle errors gracefully, returning appropriate HTTP status codes and descriptive error messages.
