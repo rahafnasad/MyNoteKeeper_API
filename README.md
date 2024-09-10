@@ -39,7 +39,9 @@ npm start
 ```
 ## API Endpoints
 ### Create a New Note
+
 - Endpoint: POST /notes
+  
 - Request Body:
  ```bash
 {
@@ -50,15 +52,22 @@ npm start
 
 ```
 - Response:
+  
      - Success: 201 Created
+       
      - Error: 400 Bad Request if title or content is missing
  
 ### Retrieve All Notes
+
 - Endpoint: GET /notes
+  
 - Query Parameters:
+  
      - limit: Number of notes to return (default: 10)
      - page: Page number for pagination (default: 1)
+       
 - Response:
+  
      - Success: 200 OK with list of notes
      - Error: 500 Internal Server Error for server issues
 
